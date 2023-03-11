@@ -1,0 +1,49 @@
+.login-main {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url('../../../assets/images/background.svg');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.login-form {
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  margin: 1.5rem;
+  border: 1px solid #cc7;
+  border-radius: 1rem;
+  background-color: rgb(255, 255, 255);
+  padding: 1.5rem;
+}
+
+.input-size {
+  font-size: 1.2rem;
+}
+
+.btn-submit {
+  background-color: #7317a7;
+  height: 65px;
+  margin-top: 1rem;
+  color: #ffffff;
+  font-size: 1.2rem;
+}
+
+.btn-google {
+  background-color: #ffffff;
+  height: 65px;
+  margin-top: 1rem;
+  color: #555252;
+  font-size: 1.2rem;
+}
+
+.google-auth {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 1rem;
+}

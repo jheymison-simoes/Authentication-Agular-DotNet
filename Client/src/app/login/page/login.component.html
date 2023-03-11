@@ -1,0 +1,52 @@
+<main class="login-main">
+  <form class="login-form" [formGroup]="loginForm" (submit)="onSubmit($event)">
+    <h1 class="text-center">LOGIN</h1>
+
+    <section class="google-auth">
+      <div id="{{googleButton}}"></div>
+    </section>
+
+    <mat-form-field class="input-size">
+      <mat-label>E-mail</mat-label>
+      <input
+        matInput
+        formControlName="email"
+        id="email"
+        autocomplete="off"
+      >
+      <mat-error class="mb-2"
+        *ngIf="loginForm.checkTouchedOrDirty('email')">
+        <span *ngIf="loginForm.containError('email', 'required')">
+          {{loginForm.getMessageError(validationMessages, 'email', 'required')}}
+        </span>
+        <span *ngIf="loginForm.containError('email', 'email')">
+          {{loginForm.getMessageError(validationMessages, 'email', 'email')}}
+        </span>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="input-size">
+      <mat-label>Senha</mat-label>
+      <input
+        matInput
+        type="password"
+        formControlName="password"
+        id="password"
+        autocomplete="off"
+      >
+      <mat-error class="mb-2"
+        *ngIf="loginForm.checkTouchedOrDirty('password')">
+        <span *ngIf="loginForm.containError('password', 'required')">
+          {{loginForm.getMessageError(validationMessages, 'password', 'required')}}
+        </span>
+      </mat-error>
+    </mat-form-field>
+
+    <button
+      mat-raised-button
+      class="btn-submit"
+      color="success"
+    >
+      ENTRAR
+    </button>
+  </form>
+</main>

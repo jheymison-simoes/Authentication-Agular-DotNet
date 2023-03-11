@@ -1,0 +1,47 @@
+version: '3.9'
+
+services:
+
+  Authentication.Api:
+    image: authenticationapi
+    container_name: AuthenticationApi
+    build:
+      context: .
+      dockerfile: src/Authentication.Api/Dockerfile
+    dns:
+      - 8.8.8.8
+    ports:
+      - "5022:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+    networks:
+      - authentication
+    volumes:
+      - ~/.config/:/root/.config
+    depends_on:
+      - postgres
+
+
+  postgres:
+    image: postgres
+    container_name: postgres-authentication
+    restart: always
+    environment:
+      POSTGRES_USER: dev
+      POSTGRES_PASSWORD: Authentication123456
+      POSTGRES_DB: dbAuthentication
+    ports:
+      - "15436:5432"
+    volumes:
+      - postgres-volume:/var/lib/postgresql/data 
+    networks:
+      - authentication
+
+volumes:
+    postgres-volume:
+        driver: local
+
+networks:
+  authentication:
+    driver: bridge
